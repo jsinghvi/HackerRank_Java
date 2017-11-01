@@ -1,0 +1,30 @@
+import java.util.*;
+import java.io.*;
+import java.lang.Math.*;
+
+class Solution{
+    public static void main(String []argh){
+        Scanner in = new Scanner(System.in);
+        int t=in.nextInt();
+        if(t>=0 && t<=500){
+            Scanner scan = new Scanner(System.in);
+        for(int i=0;i<t;i++){
+            int a = in.nextInt();
+            int b = in.nextInt();
+            int n = in.nextInt();
+            if((a>=0&&a<=50)&&(b>=0&&b<=50)&&(n>=1&&n<=15)){
+                int k=0;
+                Double sum=a+(Math.pow(2,k++)*b);
+                   System.out.print(sum.intValue() + " ");
+            for(int j=1;j<n;j++){
+                   sum=sum+(Math.pow(2,k)*b);
+                   System.out.print(sum.intValue() + " ");
+                   k++;
+            }
+                System.out.println();
+            }
+        }
+        }
+                in.close();
+    }
+}
