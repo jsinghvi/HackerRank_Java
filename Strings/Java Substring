@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.next();
+        int start = in.nextInt();
+        int end = in.nextInt();
+        boolean flag=true;
+        if((s.length()>=1 && s.length()<=100) && (start>=0 && start<=20) && (end>=0 && end<=20)){
+            char[] chars = s.toCharArray();
+            for (char c : chars) {
+        if(!Character.isLetter(c)) {
+            flag=false;
+            break;
+        }
+    }
+            if(flag){
+            s = s.substring(start,end);
+            System.out.println(s);
+            }
+        }
+}
+}
