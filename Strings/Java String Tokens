@@ -1,0 +1,21 @@
+import java.io.*;
+import java.util.*;
+import java.util.regex.*;
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String str = scan.nextLine();
+        String regex = "[A-Za-z !,?._'@]+";
+        if(Pattern.matches(regex,str) && (str.length()>=1 && str.length()<=4*100000) && !str.trim().isEmpty()){
+            String[] items = str.trim().split("[ !,?._'@]+");
+            int count = items.length;
+            System.out.println(count);
+            for(String s : items){
+            System.out.println(s);
+         }
+       }
+        else System.out.println("0");
+        scan.close();
+    }
+}
