@@ -1,0 +1,6 @@
+    String s = new String();
+    if(n>=-100 && n<=100){
+        Integer x = new Integer(n);
+        s = Integer.toString(x);    
+    }
+    
