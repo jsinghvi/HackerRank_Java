@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan = new Scanner(System.in);
+        int N = scan.nextInt();
+        if(N>=1 && N<=4000) {
+            List<Integer> list = new ArrayList<>(N);
+        for(int i=0;i<N;i++){
+            int val = scan.nextInt();
+            list.add(val);
+        }
+            
+        int Q = scan.nextInt();
+            if(Q>=1 && Q<=4000){
+        for(int i=0;i<Q;i++){
+            scan.nextLine();
+            String temp = scan.nextLine();
+            if(temp.equals("Insert")){
+                int x,y;
+                x=scan.nextInt();
+                y=scan.nextInt();
+                list.add(x,y);
+            }
+           else if(temp.equals("Delete")){
+                int x;
+                x=scan.nextInt();
+                list.remove(x);
+            }
+        }
+        //System.out.println();
+        for(Integer val : list)
+        System.out.print(val + " ");
+            }
+        }
+    }
+}
