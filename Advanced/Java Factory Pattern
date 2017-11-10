@@ -1,0 +1,7 @@
+if(order.equalsIgnoreCase("cake")){
+    return new Cake();
+}
+else if(order.equalsIgnoreCase("pizza")){
+    return new Pizza();
+}
+return null;
