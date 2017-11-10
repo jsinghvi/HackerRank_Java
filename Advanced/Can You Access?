@@ -1,0 +1,8 @@
+            Class a = Class.forName("Solution$Inner");
+            Class b = Class.forName("Solution$Inner$Private");
+            Constructor c = b.getDeclaredConstructor(a);
+            c.setAccessible(true);
+            o = c.newInstance(a.newInstance());
+            Method m = b.getDeclaredMethod("powerof2",int.class);
+            m.setAccessible(true);
+            System.out.println(String.valueOf(num)+" is "+(String)m.invoke(o,num));
