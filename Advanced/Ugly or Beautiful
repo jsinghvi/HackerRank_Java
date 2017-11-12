@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static String uglyOrBeautiful(int[] a) {
+        // Complete this function
+        HashSet<Integer> set = new HashSet<Integer>();
+        for(int i=0;i<a.length;i++){
+            set.add(a[i]);
+        }
+        int flag=0;
+        if(set.size()!=a.length) return "Ugly";
+        else{
+            boolean truth = is_Array_Sorted(a);
+            if(truth){
+            for(int i=0;i<a.length;i++){
+                if(a[i]>a.length || a[i]<0){
+                    flag=1;
+                    break;
+                }
+            }
+            if(flag==0) return "Beautiful";
+            else return "Ugly";
+         }
+        else return "Ugly";
+        }
+    }
+    
+   static boolean is_Array_Sorted(int arr[]) {
+  for(int i=0; i < arr.length-1; i++) {
+    if(arr[i] > arr[i+1]) {
+       return true;
+    }
+  }
+  return false;
+}
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int q = in.nextInt();
+        if(q>=1 && q<=100){
+        for(int a0 = 0; a0 < q; a0++){
+            int n = in.nextInt();
+            if(n>=1 && n<=10000){
+            int[] a = new int[n];
+            for(int a_i = 0; a_i < n; a_i++){
+                a[a_i] = in.nextInt();
+            }
+            String result = uglyOrBeautiful(a);
+            System.out.println(result);
+            } 
+        }
+}
+}
+}
