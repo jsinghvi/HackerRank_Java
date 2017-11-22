@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class roundRobin {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the number of processes : ");
+		int n = scan.nextInt();
+		System.out.println("Enter the time quanta : ");
+		int q = scan.nextInt();
+		int totalWait=0,totalTurnaround=0,temp=0,sum=0;
+		int[] p = new int[n];
+		int[] wt = new int[n];
+		int[] ta = new int[n];
+		for(int i=0;i<n;i++) {
+			System.out.println("Enter the burst time for P" + (i+1) + " : ");
+			p[i] = scan.nextInt();
+			sum+=p[i];
+		}
+		//wt[0]=0;
+		int i=0;
+		while(true) {
+			if(p[i]>q) {
+				p[i]-=q;
+				sum-=q;
+				temp+=q;
+				wt[i]+=q;
+				System.out.println("P" + (i+1) + " : " + temp);
+				i++;
+			}
+			else{
+				temp+=p[i];
+				sum-=p[i];
+				if(p[i]!=0)
+					System.out.println("P" + (i+1) + " : " + temp);
+				p[i]=0;
+				i++;
+			}
+			if(sum==0)
+				break;
+			else if(i==p.length)
+				i=0;
+		}
+	}
+
+}
