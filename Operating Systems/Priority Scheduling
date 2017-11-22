@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class priority_scheduling {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the number of processes : ");
+		int n = scan.nextInt();
+		int totalWait=0,totalTurnaround=0,temp;
+		int[] pname = new int[n];
+		int[] p = new int[n];
+		int[] prio = new int[n];
+		int[] wt = new int[n];
+		int[] ta = new int[n];
+		for(int i=0;i<n;i++) {
+			System.out.println("Enter the burst time and priority for P" + (i+1) + " : ");
+			p[i] = scan.nextInt();
+			prio[i] = scan.nextInt();
+			pname[i]=i+1;
+		}
+		for(int i=0;i<n;i++) {
+			for(int j=1;j<n-i;j++) {
+				if(prio[j-1]>prio[j]) {
+					temp=prio[j];
+					prio[j]=prio[j-1];
+					prio[j-1]=temp;
+					
+					temp=p[j];
+					p[j]=p[j-1];
+					p[j-1]=temp;
+					
+					temp=pname[j];
+					pname[j]=pname[j-1];
+					pname[j-1]=temp;
+				}
+			}
+		}
+		for(int i=0;i<n;i++) {
+			if(i==0) wt[i]=0;
+			else wt[i]=wt[i-1]+p[i-1];
+			ta[i]=wt[i]+p[i];
+		}
+		for(int i=0;i<n;i++) {
+			System.out.println("Waiting time for P" + pname[i] + " = " + wt[i]);
+			System.out.println("Turnaround time for P" + pname[i] + " = " + ta[i]);
+			totalWait+=wt[i];
+			totalTurnaround+=ta[i];
+		}
+		System.out.println("Average waiting time = " + totalWait/n);
+		System.out.println("Average turnaround time = " + totalTurnaround/n);
+		scan.close();
+	}
+
+}
